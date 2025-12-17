@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Премиальные Ссылки</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+      background-color: #0f0f23;
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      margin-bottom: 30px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .avatar:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 5vw, 36px);
+      font-weight: 600;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #e8e9ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 5vw, 36px);
+      font-weight: 600;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #db3636 0%, #fff8f8 50%, #e8e9ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 40px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .smaller-text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 10px;
+      font-weight: 400;
+    }
+
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 380px;
+      padding: 20px 30px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      letter-spacing: 0.3px;
+    }
+
+    .link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .link:hover .link-icon {
+      transform: scale(1.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    .link-content {
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
+
+    .link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .link:nth-child(1) {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
+
+    .link:nth-child(2) {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      box-shadow: 0 15px 35px rgba(240, 147, 251, 0.4);
+    }
+
+    .link:nth-child(3) {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      box-shadow: 0 15px 35px rgba(79, 172, 254, 0.4);
+    }
+
+    .link:nth-child(4) {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      box-shadow: 0 15px 35px rgba(67, 233, 123, 0.4);
+    }
+
+    .link:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .link:hover::before {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    }
+
+    .link:active {
+      transform: translateY(-4px) scale(0.98);
+    }
+
+    .emoji {
+      font-size: 24px;
+      margin-right: 12px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .link:hover .emoji {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .video-container {
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    .video-box {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      max-height: 300px;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 15px;
+      }
+      
+      .avatar {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .link {
+        max-width: 100%;
+        padding: 18px 25px;
+        font-size: 16px;
+      }
+      
+      .video-box {
+        max-width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="image/avia.webp" alt="Avatar" class="avatar">
+
+    <h1>ИНСТРУКЦИЯ</h1>
+
+    <div class="video-container">
+      <div class="video-box">
+        <video controls>
+          <source src="video/tutor.mp4" type="video/mp4">
+          Ваш браузер не поддерживает воспроизведение видео.
+        </video>
+      </div>
+    </div>
+
+    <h1>ССЫЛКИ</h1>
+    <h2>ВКЛЮЧАЙТЕ VPN</h2>
+    
+    <div class="smaller-text">‼️Ты из Тик Тока? Не открывается? Жми три точки вверху справа и открыть в браузере✅</div>
+    <div class="smaller-text"> </div>
+
+    <div class="links-container">
+      <a class="link" href="https://lbgame777.xyz/1NWHrb" target="_blank">
+        <img src="image/avia.webp" alt="Aviamasters" class="link-icon">
+        <div class="link-content">
+          Aviamaster - Играть в Браузере
+        </div>
+      </a>
+      <a class="link" href="https://t.me/Lucky_Bear_SpinPro_Bot/app?startapp=bXN0PTB4MjYzMjQyMTYmbT1TZW5rdSZjPUFWSUFLWg">
+        <img src="image/tg.jpg" alt="Telegram" class="link-icon">
+        <div class="link-content">
+          Aviamaster - Играть в Telegram  
+        </div>
+      </a>
+      <a class="link" href="https://t.me/+rDMqVZ1etTo0Mzg6" target="_blank">
+        <img src="image/tg.jpg" alt="Telegram" class="link-icon">
+        <div class="link-content">
+          Telegram-канал | Конкурсы 
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
